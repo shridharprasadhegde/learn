@@ -1,0 +1,158 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_015PZOR7EDGA35sjzzP7QSh43gRzjhvmoDc",
+    "name": "JENKIKS",
+    "title": "JENKIKS",
+    "description": "Workflow to create New Workflow for WM",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "CC_RUN_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015PZOR77JD6U2vTnGSXE4WILvF73jvPbCH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "NODE_ID",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015PZOR77JGXW1vH2gHb35FFDCVXOsTE3Ek",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "depends_on": "CC",
+      "display_name": "JENKIKS",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_015PZORPOLZOG3VOJnVIGw2fbFQs9hvMbWM",
+        "name": "Get CloudCenter Context",
+        "title": "Get CloudCenter Context",
+        "type": "ccs.get_cloud_context",
+        "base_type": "activity",
+        "properties": {
+          "action_id": "143",
+          "action_timeout": 180,
+          "cc_configuration": {
+            "execute_action": "on_vm",
+            "reboot_vm": false,
+            "resource_mappings": [
+              {
+                "applied_to": {
+                  "app_ids": [
+                    {
+                      "id": "29",
+                      "name": "Centos"
+                    },
+                    {
+                      "id": "33",
+                      "name": "Copy of Centos1"
+                    },
+                    {
+                      "id": "48",
+                      "name": "CustomApp4"
+                    },
+                    {
+                      "id": "46",
+                      "name": "CustomServ"
+                    },
+                    {
+                      "id": "35",
+                      "name": "Jenkins"
+                    },
+                    {
+                      "id": "40",
+                      "name": "JibinApp"
+                    },
+                    {
+                      "id": "42",
+                      "name": "WordPress"
+                    }
+                  ]
+                },
+                "resource_type": "app_profile",
+                "resource_type_meta_info": {
+                  "app_profile": {
+                    "app_ids": "All"
+                  }
+                }
+              }
+            ],
+            "sync_vm": false,
+            "wf_availability_type": "lifecycle"
+          },
+          "cc_run_id": "$workflow.definition_workflow_015PZOR7EDGA35sjzzP7QSh43gRzjhvmoDc.input.variable_workflow_015PZOR77JD6U2vTnGSXE4WILvF73jvPbCH$",
+          "continue_on_failure": false,
+          "display_name": "Get CloudCenter Context",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "override_workflow_target_group_criteria": false,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q",
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015Q9GMY66U0V5udVqS8IbQUEltFz7zoy6l",
+        "name": "Execute Action on Virtual Machine",
+        "title": "Execute Action on Virtual Machine",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Execute Action on Virtual Machine",
+          "input": {
+            "variable_workflow_015O9MPWA93B45Wbd5Ga6NXdHHROkuISJxC": "$workflow.definition_workflow_015PZOR7EDGA35sjzzP7QSh43gRzjhvmoDc.input.variable_workflow_015PZOR77JGXW1vH2gHb35FFDCVXOsTE3Ek$",
+            "variable_workflow_01gYxTTIiozpeC0G7XGX3h938xWZW4k92": "$activity.definition_activity_015PZORPOLZOG3VOJnVIGw2fbFQs9hvMbWM.output.action_type$",
+            "variable_workflow_01gmGB1E79m7TfL8YMDUFjfBqxcIAKSbf": "$activity.definition_activity_015PZORPOLZOG3VOJnVIGw2fbFQs9hvMbWM.output.response_body$",
+            "variable_workflow_01gmT7gkCb94ey8Tqd849LGeJvdfmsYrq": 10,
+            "variable_workflow_01gmUjEx0Z3LZOPK3u01H2tmZyv1QIFk6": 30,
+            "variable_workflow_01gmgK3LkOa8JMelklBT5K2eV29ZlPpqv": "touch /tmp/ao1"
+          },
+          "target": {
+            "execute_on_this_target": true,
+            "override_workflow_target": false,
+            "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q",
+            "target_type": "ccsuite.integration_endpoint"
+          },
+          "workflow_id": "definition_workflow_01gD85jbeDkSP5TO2AYeuvkAJkbgBWyhY"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "atomic_workflows": [
+    "definition_workflow_01gD85jbeDkSP5TO2AYeuvkAJkbgBWyhY"
+  ]
+}
