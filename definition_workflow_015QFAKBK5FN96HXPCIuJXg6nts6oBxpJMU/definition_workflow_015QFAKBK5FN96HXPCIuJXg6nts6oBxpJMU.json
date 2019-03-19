@@ -1,0 +1,43 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_015QFAKBK5FN96HXPCIuJXg6nts6oBxpJMU",
+    "name": "sleep",
+    "title": "sleep",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "sleep",
+      "favorite": false,
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_015QFAN179DLI4i9kjLF8eZ2slPjHo1vlOw",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "sleep_interval": 180
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
